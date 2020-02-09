@@ -73,6 +73,7 @@ export interface DrawerItem {
   text: string;
   icon: JSX.Element;
   link: string;
+  component: JSX.Element;
 }
 
 interface ResponsiveDrawerProps {
@@ -179,9 +180,15 @@ export default function ResponsiveDrawer(props: ResponsiveDrawerProps): JSX.Elem
         </nav>
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          <Typography paragraph>
-            Hello
-          </Typography>
+          <Switch>
+            {
+              drawerItems.map((item) => (
+                <Route path={item.link}>
+                  {item.component}
+                </Route>
+              ))
+            }
+          </Switch>
         </main>
       </div>
     </Router>
