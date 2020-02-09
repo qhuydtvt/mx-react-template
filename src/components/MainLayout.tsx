@@ -61,16 +61,22 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
   },
 }));
 
+export interface DrawerItem {
+  text: string;
+  icon: JSX.Element;
+}
+
 interface ResponsiveDrawerProps {
   /**
    * Injected by the documentation to work in an iframe.
    * You won't need it on your project.
    */
   container?: Element;
+  drawerItems: DrawerItem[];
 }
 
 export default function ResponsiveDrawer(props: ResponsiveDrawerProps): JSX.Element {
-  const { container } = props;
+  const { container, drawerItems } = props;
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -86,21 +92,14 @@ export default function ResponsiveDrawer(props: ResponsiveDrawerProps): JSX.Elem
       </div>
       <Divider />
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+        {
+          drawerItems.map((item) => (
+            <ListItem button key={item.text}>
+              <ListItemIcon>{item.icon}</ListItemIcon>
+              <ListItemText primary={item.text} />
+            </ListItem>
+          ))
+        }
       </List>
     </div>
   );
