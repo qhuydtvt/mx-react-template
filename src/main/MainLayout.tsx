@@ -136,7 +136,7 @@ export default function ResponsiveDrawer(props: ResponsiveDrawerProps): JSX.Elem
               {
                 drawerItems.map((item) => (
                   <Route path={item.link} key={item.link}>
-                    <Typography variant="h5" noWrap>
+                    <Typography variant="h6" noWrap>
                       {item.text}
                     </Typography>
                   </Route>

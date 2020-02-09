@@ -5,7 +5,7 @@ import {
 
 export default (): JSX.Element => (
   <div>
-    <Typography variant="h6">
+    <Typography variant="subtitle1">
       Request
     </Typography>
   </div>
