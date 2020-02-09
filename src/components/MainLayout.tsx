@@ -18,6 +18,8 @@ import {
 import {
   BrowserRouter as Router,
   Link,
+  Switch,
+  Route,
 } from 'react-router-dom';
 import logo from './logo.png';
 
@@ -116,7 +118,6 @@ export default function ResponsiveDrawer(props: ResponsiveDrawerProps): JSX.Elem
 
   return (
     <Router>
-
       <div className={classes.root}>
         <CssBaseline />
         <AppBar position="fixed" className={classes.appBar}>
@@ -131,7 +132,17 @@ export default function ResponsiveDrawer(props: ResponsiveDrawerProps): JSX.Elem
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" noWrap>
-              Responsive drawer
+              <Switch>
+                {
+                  drawerItems.map((item) => (
+                    <Route path={item.link}>
+                      <Typography variant="h6" noWrap>
+                        {item.text}
+                      </Typography>
+                    </Route>
+                  ))
+                }
+              </Switch>
             </Typography>
           </Toolbar>
         </AppBar>
