@@ -104,9 +104,9 @@ export default function ResponsiveDrawer(props: ResponsiveDrawerProps): JSX.Elem
       <List>
         {
           drawerItems.map((item) => (
-            <Link to={item.link} className={classes.drawerLink}>
+            <Link to={item.link} className={classes.drawerLink} key={item.link}>
               <CssBaseline />
-              <ListItem button key={item.text}>
+              <ListItem button key={item.link}>
                 <ListItemIcon>{item.icon}</ListItemIcon>
                 <ListItemText primary={item.text} />
               </ListItem>
@@ -132,19 +132,17 @@ export default function ResponsiveDrawer(props: ResponsiveDrawerProps): JSX.Elem
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" noWrap>
-              <Switch>
-                {
-                  drawerItems.map((item) => (
-                    <Route path={item.link}>
-                      <Typography variant="h6" noWrap>
-                        {item.text}
-                      </Typography>
-                    </Route>
-                  ))
-                }
-              </Switch>
-            </Typography>
+            <Switch>
+              {
+                drawerItems.map((item) => (
+                  <Route path={item.link} key={item.link}>
+                    <Typography variant="h5" noWrap>
+                      {item.text}
+                    </Typography>
+                  </Route>
+                ))
+              }
+            </Switch>
           </Toolbar>
         </AppBar>
         <nav className={classes.drawer} aria-label="mailbox folders">
@@ -183,7 +181,7 @@ export default function ResponsiveDrawer(props: ResponsiveDrawerProps): JSX.Elem
           <Switch>
             {
               drawerItems.map((item) => (
-                <Route path={item.link}>
+                <Route path={item.link} key={item.link}>
                   {item.component}
                 </Route>
               ))
