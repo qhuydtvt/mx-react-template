@@ -10,10 +10,12 @@ export default function App(): JSX.Element {
     {
       text: 'Alive check',
       icon: <CheckIcon />,
+      link: '/alive-check',
     },
     {
       text: 'Incident guard',
       icon: <PolicyIcon />,
+      link: '/incident-guard',
     },
   ];
   return (
