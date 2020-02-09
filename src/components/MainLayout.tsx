@@ -118,7 +118,7 @@ export default function MainLayout(): JSX.Element {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Persistent drawer
+            Inbox
           </Typography>
         </Toolbar>
       </AppBar>
